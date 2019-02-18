@@ -1,14 +1,14 @@
 <template lang="html">
 <div class="layer_search02"  id="wrap_searchC" ref="resultArea" v-show="visible" v-bind:style="{top:wOpenStatus?'50%':(fullHeight-99)+'px'}">
   <div class="txt_nav ac">
-    <a href="javascript:void(0)" :class="{on:priority==6}" @click="setPriority(6)">실시간 빠른길</a>
     <a href="javascript:void(0)" :class="{on:priority==3}" @click="setPriority(3)">최적</a>
     <a href="javascript:void(0)" :class="{on:priority==0}" @click="setPriority(0)">최단</a>
     <a href="javascript:void(0)" :class="{on:priority==2}" @click="setPriority(2)">무료</a>
     <a href="javascript:void(0)" :class="{on:priority==1}" @click="setPriority(1)">고속도로</a>
+    <a href="javascript:void(0)" :class="{on:priority==6}" @click="setPriority(6)">실시간 OFF</a>
   </div>
   <div class="box_sky">
-    <strong>실시간 교통 정보 데이터를 반영한 결과입니다.</strong>
+    <strong v-show="priority!=6">실시간 교통 정보 데이터를 반영한 결과입니다.</strong>
     <div class="body_sky">
       <ul>
         <li><span>총거리     </span><strong>{{totalLegth}}</strong></li>
@@ -60,7 +60,7 @@
       return {
         fullHeight: 0,
         routes: [],
-        priority: 6, //0:최단거리 1:고속도로 2:무료도로, 3:최적경로 6:실시간교통
+        priority: 3, //0:최단거리 1:고속도로 2:무료도로, 3:최적경로 6:실시간교통
         totalLegth: '',
         totalTime: '',
         executeMode: false,
